@@ -1,0 +1,20 @@
+image:
+  registry: docker.io
+  repository: redis
+  tag: 7.4.0
+
+architecture: standalone
+
+auth:
+    existingSecret: "redis-secrets"
+    existingSecretPasswordKey: "redis-password"
+
+master:  
+  persistence:
+    existingClaim: "redis-pvc"
+
+volumePermissions:
+  enabled: true
+
+networkPolicy:
+  enabled: false

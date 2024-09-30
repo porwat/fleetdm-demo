@@ -1,0 +1,22 @@
+hostName: fleet.local
+replicas: 1
+imageRepository: fleetdm/fleet
+imageTag: v4.57.0
+
+database:
+  secretName: mysql-secrets
+  address: mysql.fleet.svc.cluster.local:3306
+  database: fleet_db
+  username: fleet
+  passwordKey: mysql-password
+
+cache:
+  address: redis-master.fleet.svc.cluster.local:6379
+  usePassword: true
+  secretName: redis-secrets
+  passwordKey: redis-password
+
+fleet:
+  autoApplySQLMigrations: true
+  tls:
+    enabled: false

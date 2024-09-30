@@ -1,0 +1,28 @@
+image:
+  repository: mysql
+  tag: 8.0.34
+
+auth:
+  database: "fleet_db"
+  username: "fleet"
+  existingSecret: "mysql-secrets"
+  
+primary:
+  persistence:
+    enabled: true
+    existingClaim: "mysql-pvc"
+  pdb:
+    create: false
+
+secondary:
+  replicaCount: 0
+
+volumePermissions:
+  enabled: true
+  image:
+    registry: docker.io
+    repository: debian
+    tag: stable-slim
+
+networkPolicy:
+  enabled: false
